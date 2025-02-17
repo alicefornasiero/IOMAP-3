@@ -8,8 +8,8 @@
 module load mecat2/20190314
 
 ## Data Variables 
-export OUTDIR=/ibex/scratch/projects/c2079/analysis/O_minuta/mecat2
-export SPECIES=O_minuta
+export OUTDIR=/path/to/output-directory
+export SPECIES=Oryza_species
 mkdir -p ${OUTDIR}
 mkdir -p ${OUTDIR}/logs
 
