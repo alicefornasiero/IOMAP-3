@@ -8,7 +8,7 @@ The software used are:
 - **Mecat**, **Canu**, **Flye** for PacBio CLR (Circular Long Reads) assembly
 - **pbmm2**, **Arrow** and **Pilon** for CLR assembly polishing
 - **HiFiAsm** and **HiCanu** for PacBio HiFi assembly
-- **Bionano optical map** for hybrid scaffolding
+- **BioNano Solve** for BioNano hybrid scaffolding using BioNano genome maps
 
 ## Table of Contents
 
@@ -61,19 +61,22 @@ The following tools are required for this workflow. You can find installation in
 
 ### 2. PacBio CLR Assembly Polishing
 
-- **pbmm2**: For aligning PacBio subreads to the reference contig assembly  
+- **pbmm2**: For aligning PacBio subreads to the reference contig assembly
   GitHub: [https://github.com/PacificBiosciences/pbmm2](https://github.com/PacificBiosciences/pbmm2)
 
-- **samtools**: For merging and indexing BAM files  
+- **samtools**: For merging and indexing BAM files
   GitHub: [https://github.com/samtools/samtools](https://github.com/samtools/samtools)
 
-- **pbindex**: For indexing PacBio BAM files  
+- **pbindex**: For indexing PacBio BAM files
   GitHub: [https://github.com/PacificBiosciences/pbindex](https://github.com/PacificBiosciences/pbindex)
 
-- **Arrow**: For polishing genome assemblies using PacBio reads  
+- **Arrow**: For polishing genome assemblies using PacBio reads
   GitHub: [https://github.com/PacificBiosciences/gcpp](https://github.com/PacificBiosciences/gcpp)
 
-- **Pilon**: For polishing CLR read assembly  
+- **BWA**: To align short Illumina reads
+  GitHub: [https://github.com/lh3/bwa](https://github.com/lh3/bwa)
+  
+- **Pilon**: For polishing CLR read assembly
   GitHub: [https://github.com/broadinstitute/pilon](https://github.com/broadinstitute/pilon)
 
 ### 3. PacBio HiFi Assembly
@@ -155,7 +158,8 @@ The workflow utilizes **pbmm2**, **samtools**, **pbindex**, and **Arrow** for CL
 1. **Align Reads**  
    Align PacBio subreads to the contig assembly using **pbmm2**:  
    ```bash
-   pbmm2 align input sample outdir/output_prefix.sort.bam --sort -j 24 -J 8 tmp_dir
+   pbmm2 align input subreads_1.bam outdir/subreads_1.sort.bam --sort -j 24 -J 8 tmp_dir
+   pbmm2 align input subreads_2.bam outdir/subreads_2.sort.bam --sort -j 24 -J 8 tmp_dir
    ```
 
 2. **Merge Sorted BAM Files**  
@@ -186,6 +190,31 @@ The workflow utilizes **pbmm2**, **samtools**, **pbindex**, and **Arrow** for CL
    Use **Arrow** to polish the genome assembly:  
    ```bash
    gcpp --algorithm=arrow -j n_threads -r ${INPUT} -o outdir/output_prefix.arrow.fasta outdir/output_prefix.merged.bam
+   ```
+
+7. **Create index of the arrowed polished bam files using bwa** 
+   ```bash
+   bwa index -p outdir/output_prefix.arrow.bwa outdir/output_prefix.arrow.fasta
+   ```
+
+8. **Short reads mapping to the arrow-polished assembled reads using bwa**
+   ```bash
+   bwa mem -t 32 outdir/output_prefix.arrow.bwa Illumina_R1.fastq Illumina_R2.fastq | samtools view -bhS - > outdir/output_prefix.arrow.bam
+   ```
+   
+9. **Sort reads using samtools**
+   ```bash
+   samtools sort -@ 32 -o outdir/output_prefix.arrow_sorted.bam outdir/output_prefix.arrow.bam
+   ```
+
+10. **Index sorted reads**
+   ```bash
+   samtools index outdir/output_prefix.arrow_sorted.bam
+   ```
+
+11. **Polish the genome assembly using Pilon**
+   ```bash
+   java -Xmx450G -jar $PILON --genome outdir/output_prefix.arrow.fasta --frags outdir/output_prefix.arrow_sorted.bam --output output_prefix.arrow.pilon --outdir outdir/ --threads 32 --change
    ```
 
 ---
