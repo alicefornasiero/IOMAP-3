@@ -26,12 +26,17 @@ The software used are:
 
 - [2. PacBio CLR Assembly Polishing](#2-pacbio-clr-assembly-polishing-1)
   - [Workflow Steps](#workflow-steps)
-    - [1. Align Reads](#1-align-reads)
-    - [2. Merge Sorted BAM Files](#2-merge-sorted-bam-files)
+    - [1. Align Reads (pbmm2)](#1-align-reads-pbmm2)
+    - [2. Merge Sorted BAM Files (samtools)](#2-merge-sorted-bam-files-samtools)
     - [3. Index Merged BAM File Using pbindex](#3-index-merged-bam-file-using-pbindex)
     - [4. Index Merged BAM File Using samtools](#4-index-merged-bam-file-using-samtools)
-    - [5. Index Contig Assembly](#5-index-contig-assembly)
+    - [5. Index Contig Assembly (samtools)](#5-index-contig-assembly-samtools)
     - [6. Polish Assembly with Arrow](#6-polish-assembly-with-arrow)
+    - [7. Index Arrow-Polished BAM File (bwa)](#7-index-arrow-polished-bam-file-bwa)
+    - [8. Map Short Reads to Arrow-Polished Assembly (bwa)](#8-map-short-reads-to-arrow-polished-assembly-bwa)
+    - [9. Sort Reads Using samtools](#9-sort-reads-using-samtools)
+    - [10. Index Sorted Reads (samtools)](#10-index-sorted-reads-samtools)
+    - [11. Polish Genome Assembly with Pilon](#11-polish-genome-assembly-with-pilon)
 
 - [3. PacBio HiFi Assembly](#3-pacbio-hifi-assembly)
   - [HiFiasm](#hifiasm)
@@ -163,31 +168,26 @@ The workflow utilizes **pbmm2**, **samtools**, **pbindex**, and **Arrow** for CL
    ```
 
 2. **Merge Sorted BAM Files**  
-   Merge the sorted BAM files generated in the previous step:  
    ```bash
    samtools merge outdir/output_prefix.merged.bam outdir/*.sort.bam
    ```
 
 3. **Index Merged BAM File Using pbindex**  
-   Create an index for the merged BAM file using **pbindex**:  
    ```bash
    pbindex outdir/output_prefix.merged.bam
    ```
 
 4. **Index Merged BAM File Using samtools**  
-   Index the merged BAM file using **samtools**:  
    ```bash
    samtools index outdir/output_prefix.merged.bam outdir/output_prefix.merged.bam.bai
    ```
 
 5. **Index Contig Assembly**  
-   Index the reference contig assembly using **samtools**:  
    ```bash
    samtools faidx Oryza_species.fasta
    ```
 
 6. **Polish Assembly with Arrow**  
-   Use **Arrow** to polish the genome assembly:  
    ```bash
    gcpp --algorithm=arrow -j n_threads -r ${INPUT} -o outdir/output_prefix.arrow.fasta outdir/output_prefix.merged.bam
    ```
