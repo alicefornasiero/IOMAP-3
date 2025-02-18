@@ -1,15 +1,13 @@
 # Oryza_Pangenome
-Sure! Here's a GitHub README based on the provided information:
 
----
+# Genome Assembly Workflow
 
-# Oryza Alta Genome Assembly Workflow
+Workflow of commands for assembling the genomes of the wild *Oryza* species using different software for long-read sequencing data. 
 
-This repository contains a set of scripts and configurations for assembling the genome of *Oryza alta* using a combination of tools and workflows for long-read sequencing data analysis. The tools included in this pipeline are:
-
-- **Mecat**, **Canu**, **Arrow**, **Pilon** for CLR (Circular Long Reads) data
-- **HiFiAsm** for HiFi data
-- Hybrid scaffolding may be included eventually.
+The software used are:
+- **Mecat**, **Canu**, **Arrow**, **Pilon** for PacBio CLR (Circular Long Reads) data
+- **HiFiAsm** for PacBio HiFi data
+- **Bionano optical map** hybrid scaffolding
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -24,25 +22,37 @@ This repository contains a set of scripts and configurations for assembling the 
 ---
 
 ## Requirements
-- **MECAT** (for CLR assembly and correction)
+- **MECAT** (for CLR assembly)
 - **Canu** (for CLR assembly)
-- **Flye** (for de novo assembly of long reads)
-- **Arrow** (for polishing)
-- **Pilon** (for polishing)
-- **HiFiAsm** (for HiFi long reads)
+- **Flye** (for CLR assembly)
+- **Arrow** (for polishing CLR reads)
+- **Pilon** (for polishing CLR reads)
+- **HiFiAsm** (for HiFi reads)
 
 Make sure to install these tools as required for your specific sequencing data.
 
 ---
 
-## Installation
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/oryza-alta-genome-assembly.git
-   cd oryza-alta-genome-assembly
-   ```
+## Requirements
+The following tools are required for this workflow. You can find installation instructions on their respective GitHub pages:
 
-2. Ensure all dependencies (MECAT, Canu, Arrow, Pilon, Flye, etc.) are installed on your system. Instructions for each tool can be found on their respective GitHub pages or documentation.
+MECAT (for CLR assembly)
+GitHub: https://github.com/xiaochuanle/MECAT
+
+Canu (for CLR assembly)
+GitHub: https://github.com/marbl/canu
+
+Arrow (for polishing CLR assembly)
+GitHub: https://github.com/pacificbio/arrow
+
+Pilon (for polishing CLR assembly)
+GitHub: https://github.com/broadinstitute/pilon
+
+Flye (for de novo assembly of long reads)
+GitHub: https://github.com/fenderglass/Flye
+
+HiFiAsm (for HiFi data assembly)
+GitHub: https://github.com/PacificBiosciences/HiFiAsm
 
 ---
 
@@ -112,6 +122,3 @@ You need to adjust and prepare the configuration files as required by each tool.
 - Hybrid scaffolding may be introduced later to improve the assembly accuracy and contiguity.
 
 ---
-
-Feel free to open issues or submit pull requests for any improvements or bug fixes!
-
