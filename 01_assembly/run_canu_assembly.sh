@@ -1,9 +1,8 @@
 #!/bin/bash
+#SBATCH --nodes=1
 #SBATCH --job-name=canu_assembly
-#SBATCH --output=/ibex/scratch/projects/c2079/scripts/O_minuta_assembly_workflow/logs/canu_assembly.%J.out
-#SBATCH --error=/ibex/scratch/projects/c2079/scripts/O_minuta_assembly_workflow/logs/canu_assembly.%J.err
-#SBATCH --mail-user=alice.fornasiero@kaust.edu.sa
-#SBATCH --mail-type=ALL
+#SBATCH --output=/path/to/logs/canu_assembly.%J.out
+#SBATCH --error=/path/to/logs/canu_assembly.%J.err
 #SBATCH --time=10-00:00:00
 
 #### Run Canu assembler on PacBio CLR reads ####
@@ -15,8 +14,8 @@
 module load canu/2.0/gnu8.2.0;
 
 # Data Variables
-INDIR=/ibex/scratch/projects/c2079/analysis/O_minuta
-SPECIES=O_minuta
+INDIR=/path/to/Oryza_species
+SPECIES=Oryza_species
 OUTDIR=${INDIR}/canu
 mkdir -p ${OUTDIR}/
 mkdir -p ${OUTDIR}/logs
