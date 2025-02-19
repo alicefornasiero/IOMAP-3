@@ -13,16 +13,19 @@ Workflow of commands for k-mer analysis using KMC, GenomeScope and SmudgePlot to
   - [4. Extract and Analyze Genomic K-mers](#4-extract-and-analyze-genomic-k-mers)  
   - [5. Generate Smudge Plot](#5-generate-smudge-plot)  
 - [References](#references)  
+- [Author](#author)  
 
 ## Requirements
 
 The following software modules are required for this workflow. You can find installation instructions on their respective GitHub pages:
 
-- **KMC**
-  GitHub:(https://github.com/refresh-bio/KMC)
-- **GenomeScope**
+- **KMC**:
+  GitHub: (https://github.com/refresh-bio/KMC)
+  
+- **GenomeScope**:
   GitHub: (https://github.com/schatzlab/genomescope)
-- **Smudgeplot**
+  
+- **Smudgeplot**:
   GitHub: (https://github.com/KamilSJaron/smudgeplot)
 
 ## Input Parameters
