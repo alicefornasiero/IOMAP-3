@@ -1,6 +1,6 @@
 # Oryza Genome Evolution through a Tetraploid Lens
 
-This repository contains the workflow of analysis relative to the manuscript: **Oryza Genome Evolution through a Tetraploid Lens**, which explores the consequences of evolution on genome diversification in the *Oryza* genus.
+This repository contains the workflow of analysis relative to the manuscript: ***Oryza* Genome Evolution through a Tetraploid Lens**, which explores the consequences of evolution on genome diversification in the *Oryza* genus.
 
 This work is part of the International *Oryza* Map Alignment Project (I*O*MAP).
 
