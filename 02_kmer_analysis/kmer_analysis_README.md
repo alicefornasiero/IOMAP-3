@@ -12,7 +12,7 @@ Workflow of commands for k-mer analysis using KMC, GenomeScope and SmudgePlot to
   - [3. Alternative: GenomeScope Analysis](#3-alternative-genomescope-analysis)  
   - [4. Extract and Analyze Genomic K-mers](#4-extract-and-analyze-genomic-k-mers)  
   - [5. Generate Smudge Plot](#5-generate-smudge-plot)  
-- [Citation](#citation)  
+- [References](#references)  
 
 ## Requirements
 
@@ -101,7 +101,7 @@ smudgeplot_plot.R -i ${outprefix}_L"$L"_U"$U"_coverages.tsv \
 module unload smudgeplot/0.2.4
 ```
 
-## Citation
+## References
 
 If you use this pipeline in your research, please cite the respective tools:
 
