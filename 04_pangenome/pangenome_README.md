@@ -3,10 +3,18 @@
 This repository provides a pipeline for generating the pangenome of different genome types (AA, BB, CC, DD) of the *Oryza* species.
 It uses the PGGB and PANACUS tools to process the genome data, perform pangenome analysis, and generate visualizations.
 
-## Overview
+## Table of Contents
 
-For each genome type (AA, BB, CC, DD), separate multifasta files for each individual chromosome are generated. 
-PGGB is used to analyze each chromosome individually, and PANACUS is then used to further process the pangenome and visualize.
+1. [Requirements](#requirements)
+2. [Pipeline Steps](#pipeline-steps)
+   1. [PGGB Analysis](#1-pggb-analysis)
+      - [For AA Genome Types](#for-aa-genome-types)
+      - [For BB, CC, and DD Genome Types](#for-bb-cc-and-dd-genome-types)
+   2. [PANACUS Processing](#2-panacus-processing)
+      - [Histgrowth Analysis](#histgrowth-analysis)
+3. [Pangenome Visualization](#3-pangenome-visualization)
+4. [References](#references)
+5. [Authors](#authors)
 
 ## Requirements
 
@@ -21,9 +29,12 @@ The following software are required for this workflow. You can find installation
 
 ## Pipeline Steps
 
+For each genome type (AA, BB, CC, DD), separate multifasta files for each individual chromosome are generated. 
+PGGB is used to analyze each chromosome individually, and PANACUS is used to generate pangenome growth and core size estimation.
+
 ### 1. PGGB Analysis
 
-PGGB was run for each chromosome of each genome type to generate genome-type level pangenomes using the following commands:
+PGGB was run for each chromosome of each subgenome to generate genome-type level pangenomes using the following commands:
 
 CHR##.fasta: Input file for each chromosome (replace ## with chromosome number).
 -p: Percentage of matching reads to be considered.
@@ -86,5 +97,7 @@ If you use this pipeline in your research, please cite the respective software:
 
 ---
 
-## Author
+## Authors
+
 Andrea Zuccolo - King Abdullah University of Science and Technology
+Alice Fornasiero - King Abdullah University of Science and Technology
