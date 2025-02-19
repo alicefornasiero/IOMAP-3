@@ -92,12 +92,12 @@ panacus-visualize -e output.tsv > output.pdf
 
 If you use this pipeline in your research, please cite the respective software:
 
-- **PGGB**: Garrison E et al., *bioRxiv.*, 2023. [https://doi.org/10.1101/2023.04.05.535718](https://www.biorxiv.org/content/10.1101/2023.04.05.535718v1)
+- **PGGB**: Garrison E et al., *bioRxiv.*, 2023. https://pubmed.ncbi.nlm.nih.gov/37066137/
 - **Panacus**: Parmigiani L et al., *Bioinformatics*, 2024. [DOI: 10.1093/bioinformatics/btae720](https://doi.org/10.1093/bioinformatics/btae720)
 
 ---
 
 ## Authors
 
-Andrea Zuccolo - King Abdullah University of Science and Technology
-Alice Fornasiero - King Abdullah University of Science and Technology
+- Andrea Zuccolo - King Abdullah University of Science and Technology
+- Alice Fornasiero - King Abdullah University of Science and Technology
