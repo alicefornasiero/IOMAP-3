@@ -1,5 +1,3 @@
-# README
-
 # Genome Assembly Workflow
 
 Workflow of commands for assembling the genomes of the wild *Oryza* species using different software for PacBio long-read sequencing data. 
@@ -26,6 +24,10 @@ The software used are:
   - [HiCanu](#hicanu)
 
 - [4. Bionano Genome Map](#4-bionano-genome-map-1)
+
+- [References](#references)
+
+- [Author](#author)
 
 ---
 
@@ -179,8 +181,8 @@ The workflow utilizes **pbmm2**, **samtools**, **pbindex**, and **Arrow** for CL
 8. Short reads mapping to the arrow-polished assembled reads using **BWA**
    ```bash
    bwa mem -t 32 outdir/output_prefix.arrow.bwa Illumina_R1.fastq Illumina_R2.fastq | samtools view -bhS - > outdir/output_prefix.arrow.bam
-   ```
-   
+   ```  
+
 9. Sort reads using **samtools**
    ```bash
    samtools sort -@ 32 -o outdir/output_prefix.arrow_sorted.bam outdir/output_prefix.arrow.bam
@@ -207,12 +209,16 @@ Use the following command to run HiFiasm genome assembly:
 hifiasm -o output -t 32 --primary m64041_211103_120859.hifi_reads.fasta.gz m64313e_211202_171836.hifi_reads.fasta.gz
 ```
 
+---
+
 ### HiCanu
 Use the following command to run HiCanu genome assembly:
 
 ```bash
 canu -p output_dir -d prefix_name genomeSize=800m -pacbio-hifi m64068_230209_044215.hifi_reads.fastq m64068_230210_134855.hifi_reads.fastq m64068_230211_225339.hifi_reads.fastq m64068_230213_080152.hifi_reads.fastq -useGrid=false
 ```
+
+---
 
 ## 4. Bionano genome map
 The following commands uses the Bionano assembly consensus genome map (CMAP) to generate hybrid scaffolds and align CMAPs:
@@ -228,4 +234,37 @@ perl fa2cmap_multi_color.pl -i contig.fasta -e DLE-1 1
 python runCharacterize.py -t RefAligner -q EXP_REFINEFINAL1.cmap -r Oryza_species.cmap -p pipeline_dir -a optArguments_nonhaplotype_saphyr.xml -n 8
 
 ```
+
+---
+
+## References
+
+- **MECAT2**: Chuan-Le X. et al. *Nature Methods*, 2017.  
+  https://doi.org/10.1038/nmeth.4432
+
+- **Canu**: Koren S. et al. *Genome Res.*, 2017.  
+  http://www.genome.org/cgi/doi/10.1101/gr.215087.116.
+  
+- **Flye**: Kolmogorov M. et al. *Nat. Biotechnol.*, 2019.  
+  https://www.nature.com/articles/s41587-019-0072-8
+
+- **pbmm2**: https://github.com/PacificBiosciences/pbbioconda
+
+- **samtools**: Danecek P. et al. *GigaScience*, 2021.  
+  https://academic.oup.com/gigascience/article/10/2/giab008/6137722?login=true
+  
+- **pbindex**: https://github.com/PacificBiosciences/pbbioconda
+
+- **Arrow**: https://github.com/PacificBiosciences/pbbioconda  
+  https://github.com/PacificBiosciences/gcpp
+
+- **BWA**: Li H. & Durbin R. *Bioinformatics*, 2010.  
+  https://academic.oup.com/bioinformatics/article/26/5/589/211735?login=true
+
+- **Pilon**: Walker B.J. et al. *PLoS ONE*, 2014.  
+  https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0112963
+
+## Author
+
+Alice Fornasiero - King Abdullah University of Science and Technology
 
