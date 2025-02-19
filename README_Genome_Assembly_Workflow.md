@@ -12,40 +12,18 @@ The software used are:
 
 ## Table of Contents
 
-- [Requirements](#requirements)
-  - [1. PacBio CLR Assembly](#1-pacbio-clr-assembly)
-  - [2. PacBio CLR Assembly Polishing](#2-pacbio-clr-assembly-polishing)
-  - [3. PacBio HiFi Assembly](#3-pacbio-hifi-assembly)
-  - [4. Bionano Genome Map](#4-bionano-genome-map)
-
 - [1. PacBio CLR Assembly](#1-pacbio-clr-assembly-1)
   - [MECAT](#mecat)
-    - [MECAT Configuration File Example](#mecat-configuration-file-example)
   - [Canu](#canu)
   - [Flye](#flye)
 
 - [2. PacBio CLR Assembly Polishing](#2-pacbio-clr-assembly-polishing-1)
-  - [Workflow Steps](#workflow-steps)
-    - [1. Align Reads (pbmm2)](#1-align-reads-pbmm2)
-    - [2. Merge Sorted BAM Files (samtools)](#2-merge-sorted-bam-files-samtools)
-    - [3. Index Merged BAM File Using pbindex](#3-index-merged-bam-file-using-pbindex)
-    - [4. Index Merged BAM File Using samtools](#4-index-merged-bam-file-using-samtools)
-    - [5. Index Contig Assembly (samtools)](#5-index-contig-assembly-samtools)
-    - [6. Polish Assembly with Arrow](#6-polish-assembly-with-arrow)
-    - [7. Index Arrow-Polished BAM File (bwa)](#7-index-arrow-polished-bam-file-bwa)
-    - [8. Map Short Reads to Arrow-Polished Assembly (bwa)](#8-map-short-reads-to-arrow-polished-assembly-bwa)
-    - [9. Sort Reads Using samtools](#9-sort-reads-using-samtools)
-    - [10. Index Sorted Reads (samtools)](#10-index-sorted-reads-samtools)
-    - [11. Polish Genome Assembly with Pilon](#11-polish-genome-assembly-with-pilon)
 
 - [3. PacBio HiFi Assembly](#3-pacbio-hifi-assembly)
   - [HiFiasm](#hifiasm)
   - [HiCanu](#hicanu)
 
 - [4. Bionano Genome Map](#4-bionano-genome-map-1)
-  - [Hybrid Scaffold Generation](#hybrid-scaffold-generation)
-  - [FASTA to CMAP Conversion](#fasta-to-cmap-conversion)
-  - [CMAP Alignment](#cmap-alignment)
 
 ---
 
@@ -66,22 +44,22 @@ The following tools are required for this workflow. You can find installation in
 
 ### 2. PacBio CLR Assembly Polishing
 
-- **pbmm2**: For aligning PacBio subreads to the reference contig assembly
+- **pbmm2**: For aligning PacBio subreads to the reference contig assembly  
   GitHub: [https://github.com/PacificBiosciences/pbmm2](https://github.com/PacificBiosciences/pbmm2)
 
-- **samtools**: For merging and indexing BAM files
+- **samtools**: For merging and indexing BAM files  
   GitHub: [https://github.com/samtools/samtools](https://github.com/samtools/samtools)
 
-- **pbindex**: For indexing PacBio BAM files
+- **pbindex**: For indexing PacBio BAM files  
   GitHub: [https://github.com/PacificBiosciences/pbindex](https://github.com/PacificBiosciences/pbindex)
 
-- **Arrow**: For polishing genome assemblies using PacBio reads
+- **Arrow**: For polishing genome assemblies using PacBio reads  
   GitHub: [https://github.com/PacificBiosciences/gcpp](https://github.com/PacificBiosciences/gcpp)
 
-- **BWA**: To align short Illumina reads
+- **BWA**: To align short Illumina reads  
   GitHub: [https://github.com/lh3/bwa](https://github.com/lh3/bwa)
   
-- **Pilon**: For polishing CLR read assembly
+- **Pilon**: For polishing CLR read assembly  
   GitHub: [https://github.com/broadinstitute/pilon](https://github.com/broadinstitute/pilon)
 
 ### 3. PacBio HiFi Assembly
@@ -160,59 +138,58 @@ The workflow utilizes **pbmm2**, **samtools**, **pbindex**, and **Arrow** for CL
 
 ### Workflow Steps
 
-1. **Align Reads**  
-   Align PacBio subreads to the contig assembly using **pbmm2**:  
+1. Align PacBio subreads to the contig assembly using **pbmm2**:  
    ```bash
    pbmm2 align input subreads_1.bam outdir/subreads_1.sort.bam --sort -j 24 -J 8 tmp_dir
    pbmm2 align input subreads_2.bam outdir/subreads_2.sort.bam --sort -j 24 -J 8 tmp_dir
    ```
 
-2. **Merge Sorted BAM Files**  
+2. Merge sorted BAM files using **samtools**  
    ```bash
    samtools merge outdir/output_prefix.merged.bam outdir/*.sort.bam
    ```
 
-3. **Index Merged BAM File Using pbindex**  
+3. Index merged BAM file using **pbindex**  
    ```bash
    pbindex outdir/output_prefix.merged.bam
    ```
 
-4. **Index Merged BAM File Using samtools**  
+4. Index merged BAM file using **samtools**  
    ```bash
    samtools index outdir/output_prefix.merged.bam outdir/output_prefix.merged.bam.bai
    ```
 
-5. **Index Contig Assembly**  
+5. Index contig assembly using **samtools**
    ```bash
    samtools faidx Oryza_species.fasta
    ```
 
-6. **Polish Assembly with Arrow**  
+6. Polish assembly with **Arrow**  
    ```bash
    gcpp --algorithm=arrow -j n_threads -r ${INPUT} -o outdir/output_prefix.arrow.fasta outdir/output_prefix.merged.bam
    ```
 
-7. **Create index of the arrowed polished bam files using bwa** 
+7. Create index of the arrowed polished bam files using **BWA** 
    ```bash
    bwa index -p outdir/output_prefix.arrow.bwa outdir/output_prefix.arrow.fasta
    ```
 
-8. **Short reads mapping to the arrow-polished assembled reads using bwa**
+8. Short reads mapping to the arrow-polished assembled reads using **BWA**
    ```bash
    bwa mem -t 32 outdir/output_prefix.arrow.bwa Illumina_R1.fastq Illumina_R2.fastq | samtools view -bhS - > outdir/output_prefix.arrow.bam
    ```
    
-9. **Sort reads using samtools**
+9. Sort reads using **samtools**
    ```bash
    samtools sort -@ 32 -o outdir/output_prefix.arrow_sorted.bam outdir/output_prefix.arrow.bam
    ```
 
-10. **Index sorted reads**
+10. Index sorted using **samtools**
    ```bash
    samtools index outdir/output_prefix.arrow_sorted.bam
    ```
 
-11. **Polish the genome assembly using Pilon**
+11. Polish the genome assembly using **Pilon**
    ```bash
    java -Xmx450G -jar $PILON --genome outdir/output_prefix.arrow.fasta --frags outdir/output_prefix.arrow_sorted.bam --output output_prefix.arrow.pilon --outdir outdir/ --threads 32 --change
    ```
