@@ -103,9 +103,10 @@ module unload smudgeplot/0.2.4
 
 ## Citation
 
-- **KMC**: Kokot et al., Bioinformatics, 2017
-- **GenomeScope**: Vurture et al., Genome Research, 2017
-- **Smudgeplot**: Ranallo-Benavidez et al., GigaScience, 2020
+If you use this pipeline in your research, please cite the respective tools:
+
+- **KMC**: Kokot et al., *Bioinformatics*, 2017. [DOI: 10.1093/bioinformatics/btx304](https://doi.org/10.1093/bioinformatics/btx304)
+- **GenomeScope**: Ranallo-Benavidez et al., *Nature Communications*, 2020. [DOI: 10.1038/s41467-020-14998-3](https://doi.org/10.1038/s41467-020-14998-3)
 
 ## Author
 
