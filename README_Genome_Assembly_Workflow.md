@@ -12,6 +12,8 @@ The software used are:
 
 ## Table of Contents
 
+- [Requirements](#requirements)
+
 - [1. PacBio CLR Assembly](#1-pacbio-clr-assembly-1)
   - [MECAT](#mecat)
   - [Canu](#canu)
