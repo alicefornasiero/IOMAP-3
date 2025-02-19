@@ -2,15 +2,27 @@
 
 Workflow of commands for k-mer analysis using KMC, GenomeScope and SmudgePlot to estimate genome size, heterozygosity and ploidy.
 
+## Table of Contents
+
+- [Requirements](#requirements)  
+- [Input Parameters](#input-parameters)  
+- [Pipeline Steps](#pipeline-steps)  
+  - [1. K-mer Counting with KMC](#1-k-mer-counting-with-kmc)  
+  - [2. Estimation of Coverage Thresholds](#2-estimation-of-coverage-thresholds)  
+  - [3. Alternative: GenomeScope Analysis](#3-alternative-genomescope-analysis)  
+  - [4. Extract and Analyze Genomic K-mers](#4-extract-and-analyze-genomic-k-mers)  
+  - [5. Generate Smudge Plot](#5-generate-smudge-plot)  
+- [Citation](#citation)  
+
 ## Requirements
 
 The following software modules are required for this workflow. You can find installation instructions on their respective GitHub pages:
 
-- **KMC** (v3.1.2)
+- **KMC**
   GitHub:(https://github.com/refresh-bio/KMC)
-- **GenomeScope** (v2.0)
+- **GenomeScope**
   GitHub: (https://github.com/schatzlab/genomescope)
-- **Smudgeplot** (v0.2.4)
+- **Smudgeplot**
   GitHub: (https://github.com/KamilSJaron/smudgeplot)
 
 ## Input Parameters
@@ -90,8 +102,6 @@ module unload smudgeplot/0.2.4
 ```
 
 ## Citation
-
-If you use this pipeline in your research, please cite the respective tools:
 
 - **KMC**: Kokot et al., Bioinformatics, 2017
 - **GenomeScope**: Vurture et al., Genome Research, 2017
