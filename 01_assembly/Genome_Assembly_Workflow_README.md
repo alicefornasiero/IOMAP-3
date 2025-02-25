@@ -23,7 +23,7 @@ The software used are:
   - [HiFiasm](#hifiasm)
   - [HiCanu](#hicanu)
 
-- [4. Bionano Genome Map](#4-bionano-genome-map-1)
+- [4. Bionano Genome Mapping](#4-bionano-genome-mapping)
 
 - [References](#references)
 
@@ -220,7 +220,7 @@ canu -p output_dir -d prefix_name genomeSize=800m -pacbio-hifi m64068_230209_044
 
 ---
 
-## 4. Bionano genome map
+## 4. Bionano genome mapping
 The following commands uses the Bionano assembly consensus genome map (CMAP) to generate hybrid scaffolds and align CMAPs:
 
 ```bash
