@@ -8,21 +8,24 @@ This work is part of the International *Oryza* Map Alignment Project (I*O*MAP).
 
 This repository includes:
 
-- The scripts used to generate and validate the wild *Oryza* genome assemblies used in this study
-- The scripts used to generate the *Oryza* genome-type level pangenomes
+- The scripts used to generate and validate the wild *Oryza* genome assemblies used in this study;
+- The scripts used to generate the *Oryza* genome-type level pangenomes;
 - The relative readme files with detailed description of each step:
    - [1. Genome Assembly](https://github.com/alicefornasiero/IOMAP-3/blob/main/01_assembly/Genome_Assembly_Workflow_README.md)
    - [2. K-mer Analysis](https://github.com/alicefornasiero/IOMAP-3/blob/main/02_kmer_analysis/kmer_analysis_README.md)
    - [3. Pangenome Generation](https://github.com/alicefornasiero/IOMAP-3/blob/main/03_pangenome/pangenome_README.md)
-- The links to the other repositories relative to this work
+- The links to the other repositories relative to this work.
 
 ## Links to the other Repositories
 
-- Co-author: Tao Feng [https://github.com/xiaoyezao/SynNet-Py]
+- Microsynteny and phylogenetic analysis of the *Oryza* nuclear gene clusters:
+   - Co-author: Tao Feng [https://github.com/xiaoyezao/SynNet-Py]
   
-- Co-author: Nam V. Hoang [https://github.com/nam-hoang/rice_cp_phylo_analysis]
+- Phylogenetic analysis of the *Oryza* chloroplast genomes:
+   - Co-author: Nam V. Hoang [https://github.com/nam-hoang/rice_cp_phylo_analysis]
   
-- Co-author: Gopal Misra [https://github.com/gopal-misra/Oryza_coarctata_expression]
+- Expression analysis of homoeologous gene pairs in the tetraploid *O. coarctata*:
+   - Co-author: Gopal Misra [https://github.com/gopal-misra/Oryza_coarctata_expression]
 
 ---
 
