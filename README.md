@@ -19,7 +19,7 @@ This repository includes:
 ## Links to the other Repositories
 
 - Microsynteny and phylogenetic analysis of the *Oryza* nuclear gene clusters:
-   - Co-author: Tao Feng [https://github.com/xiaoyezao/SynNet-Py]
+   - Co-author: Tao Feng [https://github.com/xiaoyezao/Rice-Phylogenomics]
   
 - Phylogenetic analysis of the *Oryza* chloroplast genomes:
    - Co-author: Nam V. Hoang [https://github.com/nam-hoang/rice_cp_phylo_analysis]
