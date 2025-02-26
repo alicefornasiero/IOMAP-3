@@ -8,10 +8,13 @@ This work is part of the International *Oryza* Map Alignment Project (I*O*MAP).
 
 This repository includes:
 
-- The scripts used to generate and validate the wild *Oryza* genome assemblies used in this study;
-- The scripts used to generate the *Oryza* genome-type level pangenomes;
-- The relative readme files with detailed description of each step;
-- The links to the other repositories relative to this work.
+- The scripts used to generate and validate the wild *Oryza* genome assemblies used in this study
+- The scripts used to generate the *Oryza* genome-type level pangenomes
+- The relative readme files with detailed description of each step:
+   - [1. Genome Assembly](https://github.com/alicefornasiero/IOMAP-3/edit/main/01_assembly/Genome_Assembly_Workflow_README.md)
+   - [2. K-mer Analysis](https://github.com/alicefornasiero/IOMAP-3/blob/main/02_kmer_analysis/kmer_analysis_README.md)
+   - [3. Pangenome Generation](https://github.com/alicefornasiero/IOMAP-3/blob/main/03_pangenome/pangenome_README.md)
+- The links to the other repositories relative to this work
 
 ## Links to the other Repositories
 
