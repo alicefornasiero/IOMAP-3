@@ -6,16 +6,16 @@ PGGB and PANACUS software are used to process genome data, perform pangenome ana
 
 ## Table of Contents
 
-1. [Requirements](#requirements)
-2. [Pipeline Steps](#pipeline-steps)
-   1. [PGGB](#1-pggb)
-      - [For AA Genome Types](#for-aa-genome-types)
-      - [For BB, CC, and DD Genome Types](#for-bb-cc-and-dd-genome-types)
-   2. [PANACUS](#2-panacus)
-      - [Histgrowth Analysis](#histgrowth-analysis)
-      - [Pangenome Visualization](#pangenome-visualization)
-3. [References](#references)
-4. [Authors](#authors)
+- [Requirements](#requirements)
+- [Pipeline Steps](#pipeline-steps)
+- [1. PGGB](#1-pggb)
+  - [For AA Genome Types](#for-aa-genome-types)
+  - [For BB, CC, and DD Genome Types](#for-bb-cc-and-dd-genome-types)
+- [2. PANACUS](#2-panacus)
+  - [Histgrowth Analysis](#histgrowth-analysis)
+  - [Pangenome Visualization](#pangenome-visualization)
+- [References](#references)
+- [Authors](#authors)
 
 ## Requirements
 
