@@ -11,22 +11,16 @@ The software used are:
 ## Table of Contents
 
 - [Requirements](#requirements)
-
 - [1. PacBio CLR Assembly](#1-pacbio-clr-assembly-1)
   - [MECAT](#mecat)
   - [Canu](#canu)
   - [Flye](#flye)
-
 - [2. PacBio CLR Assembly Polishing](#2-pacbio-clr-assembly-polishing-1)
-
 - [3. PacBio HiFi Assembly](#3-pacbio-hifi-assembly)
   - [HiFiasm](#hifiasm)
   - [HiCanu](#hicanu)
-
 - [4. Bionano Genome Mapping](#4-bionano-genome-mapping)
-
 - [References](#references)
-
 - [Author](#author)
 
 ---
