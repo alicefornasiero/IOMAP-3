@@ -38,4 +38,4 @@ For more details or to request materials, please contact the corresponding autho
 
 ## Citation
 
-Fornasiero, A., Feng, T., Al-Bader, N., Alsantely, A., Mussurova, S., et al. *Oryza* Genome Evolution through a Tetraploid Lens. *Nature Genetics*. 2025
+Fornasiero A, Feng T, Al-Bader N, Alsantely A, Mussurova S, Hoang NV, Misra G, Zhou Y, Fabbian L, Mohammed N, Rivera Serna L, Thimma M, Llaca V, Parakkal P, Kudrna D, Copetti D, Rajasekar S, Lee S, Talag J, Sobel-Sorenson C, Carpentier MC, Panaud O, McNally KL, Zhang J, Zuccolo A, Schranz ME, Wing RA. *Oryza* genome evolution through a tetraploid lens. *Nat Genet.* 2025 Apr 28. doi: [10.1038/s41588-025-02183-5] (https://www.nature.com/articles/s41588-025-02183-5)
