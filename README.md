@@ -27,6 +27,9 @@ This repository includes:
 - Expression analysis of homoeologous gene pairs in the tetraploid *O. coarctata*:
    - Co-author: Gopal Misra [https://github.com/gopal-misra/Oryza_coarctata_expression]
 
+- Genome sequences (fasta files), gene annotations (gff files), and cds and protein sequences (fasta files) of the 11 wild Oryza genomes are available on Gramene Oryza!
+   - [https://ftp.gramene.org/oryza/tetraploids/]
+
 ---
 
 For more details or to request materials, please contact the corresponding authors:
